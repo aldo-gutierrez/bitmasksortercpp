@@ -32,12 +32,13 @@ int32_t *bit_mask_sorter::BitSorterUtils::getMaskAsArray(int32_t mask, int32_t& 
 int32_t bit_mask_sorter::BitSorterUtils::getMaskBit(int32_t k)
 {
     int32_t n = 1;
-    return (n << k);
+    return n << k;
 }
 
 int32_t bit_mask_sorter::BitSorterUtils::twoPowerX(int32_t k)
 {
-    return 1 << k;
+    int32_t n = 1;
+    return n << k;
 }
 
 

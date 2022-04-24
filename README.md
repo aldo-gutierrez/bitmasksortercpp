@@ -56,6 +56,7 @@ Release Mode, MinGW w64 9.0, CMake 3.22.3, GDB 11.1, default CLion 2022.1 Config
 - Port other algorithms from Java repository
 - Learn C
 - Compare to Wolf Sort
+- Learn C++ Templates
 
 # References:
 [Ska Sort] (https://github.com/skarupke/ska_sort)

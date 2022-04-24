@@ -9,6 +9,8 @@ static const int32_t arraySize = 1000000;
 
 static const int range = 1000;
 
+static const int iterations = 100;
+
 int main() {
     std::cout << "Comparing Sorters" << std::endl;
 
@@ -19,7 +21,7 @@ int main() {
     long long totalRadix = 0;
     long long totalSkaSort = 0;
 
-    for (int j = 0; j < 100; j++)
+    for (int j = 0; j < iterations; j++)
     {
         // Array of integers
         auto * intArray = new int32_t[arraySize];
@@ -72,9 +74,9 @@ int main() {
 
     }
     std::cout << std::endl;
-    std::cout << " AVG C++      time: " <<totalCpp/100 << std::endl;
-    std::cout << " AVG Radix    time: " <<totalRadix/100 << std::endl;
-    std::cout << " AVG Ska Sort time: " <<totalSkaSort/100 << std::endl;
+    std::cout << " AVG C++      time: " << totalCpp / iterations << std::endl;
+    std::cout << " AVG Radix    time: " << totalRadix / iterations << std::endl;
+    std::cout << " AVG Ska Sort time: " << totalSkaSort / iterations << std::endl;
 
     return 0;
 }
