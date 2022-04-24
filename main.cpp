@@ -3,6 +3,7 @@
 #include "RadixBitSorterInt.h"
 #include <algorithm>
 #include "IntSorterUtils.h"
+//#include "ska_sort.hpp"
 
 static const int32_t arraySize = 1000000;
 
@@ -16,6 +17,7 @@ int main() {
 
     long long totalCpp = 0;
     long long totalRadix = 0;
+    long long totalSkaSort = 0;
 
     for (int j = 0; j < 100; j++)
     {
@@ -33,24 +35,32 @@ int main() {
 
         // Sort array in ASC order
         std::cout << "Sorted array in ASC order" << std::endl;
+
         auto start = std::chrono::high_resolution_clock::now();
         std::sort(intArray, intArray + arraySize);
         auto finish = std::chrono::high_resolution_clock::now();
+        auto time = (finish - start).count();
+        totalCpp+=time;
+        std::cout << "Elapsed Time C++   is " << time << std::endl;
 
-        auto cppTime = (finish - start).count();
-        totalCpp+=cppTime;
-        std::cout << "Elapsed Time C++   is " << cppTime << std::endl;
+        //Add ska_sort.hpp
+//        bit_mask_sorter::IntSorterUtils::arraycopy(intArray, 0, intArrayAux, 0, arraySize);
+//        start = std::chrono::high_resolution_clock::now();
+//        ska_sort(intArray, intArray + arraySize);
+//        finish = std::chrono::high_resolution_clock::now();
+//        time = (finish - start).count();
+//        totalSkaSort+=time;
+//        std::cout << "Elapsed Time Ska S. is " << time << std::endl;
 
-        intArrayAux = new int32_t [arraySize];
         bit_mask_sorter::IntSorterUtils::arraycopy(intArray, 0, intArrayAux, 0, arraySize);
         start = std::chrono::high_resolution_clock::now();
         auto* radixBiSorterInt = new bit_mask_sorter::RadixBitSorterInt();
         radixBiSorterInt->sort(intArray, arraySize);
         finish = std::chrono::high_resolution_clock::now();
-        auto radixTime = (finish - start).count();
-        totalRadix+=radixTime;
+        time = (finish - start).count();
+        totalRadix+=time;
+        std::cout << "Elapsed Time Radix is  " << time << std::endl;
 
-        std::cout << "Elapsed Time Radix is  " << radixTime << std::endl;
 
         std::sort(intArrayAux, intArrayAux + arraySize);
 
@@ -62,8 +72,9 @@ int main() {
 
     }
     std::cout << std::endl;
-    std::cout << " AVG C++   time: " <<totalCpp/100 << std::endl;
-    std::cout << " AVG Radix time: " <<totalRadix/100 << std::endl;
+    std::cout << " AVG C++      time: " <<totalCpp/100 << std::endl;
+    std::cout << " AVG Radix    time: " <<totalRadix/100 << std::endl;
+    std::cout << " AVG Ska Sort time: " <<totalSkaSort/100 << std::endl;
 
     return 0;
 }
