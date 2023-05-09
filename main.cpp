@@ -3,13 +3,15 @@
 #include "RadixBitSorterInt.h"
 #include <algorithm>
 #include "IntSorterUtils.h"
-//#include "ska_sort.hpp"
+#include "ska_sort.hpp"
 
-static const int32_t arraySize = 1000000;
+//static const size_t arraySize = 40000000;
+static const size_t arraySize = 1000000;
 
 static const int range = 1000;
+//static const int range = 1000000000;
 
-static const int iterations = 100;
+static const int iterations = 20;
 
 int main() {
     std::cout << "Comparing Sorters" << std::endl;
@@ -46,13 +48,13 @@ int main() {
         std::cout << "Elapsed Time C++   is " << time << std::endl;
 
         //Add ska_sort.hpp
-//        bit_mask_sorter::IntSorterUtils::arraycopy(intArray, 0, intArrayAux, 0, arraySize);
-//        start = std::chrono::high_resolution_clock::now();
-//        ska_sort(intArray, intArray + arraySize);
-//        finish = std::chrono::high_resolution_clock::now();
-//        time = (finish - start).count();
-//        totalSkaSort+=time;
-//        std::cout << "Elapsed Time Ska S. is " << time << std::endl;
+        bit_mask_sorter::IntSorterUtils::arraycopy(intArray, 0, intArrayAux, 0, arraySize);
+        start = std::chrono::high_resolution_clock::now();
+        ska_sort(intArray, intArray + arraySize);
+        finish = std::chrono::high_resolution_clock::now();
+        time = (finish - start).count();
+        totalSkaSort+=time;
+        std::cout << "Elapsed Time Ska S. is " << time << std::endl;
 
         bit_mask_sorter::IntSorterUtils::arraycopy(intArray, 0, intArrayAux, 0, arraySize);
         start = std::chrono::high_resolution_clock::now();

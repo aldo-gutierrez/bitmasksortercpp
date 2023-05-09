@@ -13,7 +13,7 @@ namespace bit_mask_sorter {
 
     class IntSorter : public Sorter {
     public:
-        virtual void sort(int32_t *array, int32_t aLength) = 0;
+        virtual void sort(int32_t *array, size_t aLength) = 0;
     };
 }
 #endif //BITMASKSORTER_INTSORTER_H

@@ -18,11 +18,11 @@ namespace bit_mask_sorter {
             this->unsignedN = unsignedP;
         }
 
-        static void radixSort(int32_t *array, int32_t start, int32_t end, const int32_t *kList, int32_t kIndexStart,
-                              int32_t kIndexEnd,
+        static void radixSort(int32_t *array, size_t start, size_t end, const int32_t *kList, size_t kIndexStart,
+                              size_t kIndexEnd,
                               int32_t *aux);
 
-        virtual void sort(int32_t *array, int32_t aLength);
+        virtual void sort(int32_t *array, size_t aLength);
 
         virtual ~RadixBitSorterInt() = default;
 
