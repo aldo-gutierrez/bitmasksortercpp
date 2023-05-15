@@ -3,10 +3,10 @@
 //
 
 #include "BitSorterUtils.h"
-int32_t *bit_mask_sorter::BitSorterUtils::getMaskBit(const int32_t *array, size_t start, size_t end) {
+int32_t *bit_mask_sorter::BitSorterUtils::getMaskBit(const int32_t *array, size_t start, size_t endP1) {
     int32_t mask = 0x00000000;
     int32_t inv_mask = 0x00000000;
-    for (int32_t i = start; i < end; i++) {
+    for (size_t i = start; i < endP1; i++) {
         int32_t ei = array[i];
         mask = mask | ei;
         inv_mask = inv_mask | (~ei);

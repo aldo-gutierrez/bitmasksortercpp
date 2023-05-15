@@ -12,11 +12,6 @@ void bit_mask_sorter::RadixBitSorterInt::sort(int32_t *array, size_t aLength) {
     }
     size_t start = 0;
     size_t end = aLength;
-    //int32_t ordered = isUnsigned() ? listIsOrderedUnSigned(array, start, end) : listIsOrderedSigned(array, start, end);
-    //if (ordered == AnalysisResult.DESCENDING) {
-    //    IntSorterUtils.reverse(array, start, end);
-    //}
-    //if (ordered != AnalysisResult.UNORDERED) return;
 
     int32_t *maskParts = BitSorterUtils::getMaskBit(array, start, end);
     int32_t mask = maskParts[0] & maskParts[1];

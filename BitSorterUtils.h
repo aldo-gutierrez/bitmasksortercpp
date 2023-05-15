@@ -15,7 +15,7 @@ namespace bit_mask_sorter {
 
         static int32_t *getMaskAsArray(int32_t mask, size_t &size);
 
-        static int32_t *getMaskBit(const int32_t *array, size_t start, size_t end);
+        static int32_t *getMaskBit(const int32_t *array, size_t start, size_t endP1);
 
     };
 }

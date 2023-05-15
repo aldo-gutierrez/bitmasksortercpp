@@ -11,11 +11,11 @@ namespace bit_mask_sorter {
     class RadixBitSorterInt : public IntSorter {
     public:
         bool isUnsigned() {
-            return unsignedN;
+            return _unsignedN;
         }
 
         void setUnsigned(bool unsignedP) {
-            this->unsignedN = unsignedP;
+            this->_unsignedN = unsignedP;
         }
 
         static void radixSort(int32_t *array, size_t start, size_t end, const int32_t *kList, size_t kIndexStart,
@@ -27,7 +27,7 @@ namespace bit_mask_sorter {
         virtual ~RadixBitSorterInt() = default;
 
     private:
-        bool unsignedN = false;
+        bool _unsignedN = false;
     };
 }
 
